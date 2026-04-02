@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LADSA",
+        "repositoryURL": "https://github.com/LA-Labs/LADSA.git",
+        "state": {
+          "branch": null,
+          "revision": "37b532de3571f15d28a77ecf9f59019d190dfd9c",
+          "version": "0.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

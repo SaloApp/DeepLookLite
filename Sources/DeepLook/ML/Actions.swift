@@ -392,7 +392,9 @@ public class LKActions {
     return try autoreleasepool { () -> ProcessInput in
       precondition(input.asset.image.cgImage != nil, "must provide cgImage \(input.asset.identifier)")
       
-      let model = try Models.getModel(by: .mobileNet_SSD)
+      guard let model = try? Models.getModel(by: .mobileNet_SSD) else {
+        return input
+      }
       let request = VNCoreMLRequest(model: model)
       request.imageCropAndScaleOption = .scaleFill
 #if targetEnvironment(simulator)
@@ -427,7 +429,9 @@ public class LKActions {
   private func faceEmotionProcess(input: ProcessInput) throws -> ProcessInput {
     precondition(input.asset.image.cgImage != nil, "must provide cgImage \(input.asset.identifier)")
     
-    let model = try Models.getModel(by: .faceExpression)
+    guard let model = try? Models.getModel(by: .faceExpression) else {
+        return input
+    }
     let request = VNCoreMLRequest(model: model)
     request.imageCropAndScaleOption = .scaleFill
 #if targetEnvironment(simulator)
